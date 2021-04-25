@@ -41,9 +41,14 @@ nObjs = length(objectnames);
 simplenames = cell(size(objectnames));
 for iObjs = 1 : nObjs
     label = objectnames{iObjs};
+    if strcmp(label, 'car' )
+       label 
+    end
     label = strsplit(label, ', ');
     objLabel = label{1};
-    
+%     if strcmp(objLabel, 'car' )
+%        objLabel 
+%     end
     % Exception for experimental conditions
     if any(strcmp({'monitor'}, objLabel)) && length(label)>1
         objLabel = label{2};

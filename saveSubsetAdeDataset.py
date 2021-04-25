@@ -7,9 +7,9 @@ def main(local):
 	MissingIndex = pd.read_csv('../masks-ade-4/AtrFileIndexError_20210413-200239.csv', header = None,names = ['category','filepath'])
 	SegMissing = pd.read_csv('../masks-ade-4/SegMasksNotFound_20210413-200239.csv')
 	if local:
-		Ade_subset = pd.read_csv('../ADE20K_labels/Ade20K_labels_local.txt').set_index('filename')
+		Ade_subset = pd.read_csv('../ADE20K_labels/Ade20K_labels_local_scene.txt').set_index('filename')
 	else:
-		Ade_subset = pd.read_csv('../ADE20K_labels/Ade20K_labels_marcc.txt').set_index('filename')
+		Ade_subset = pd.read_csv('../ADE20K_labels/Ade20K_labels_marcc_scene.txt').set_index('filename')
 	MissingIndex['Filenames'] = [i[-1] for i in MissingIndex.filepath.str.split('/')]
 	SegMissing['Filenames'] = [i[-1] for i in SegMissing.filepath.str.split('/')]
 	MissingIndex = MissingIndex.set_index('Filenames')
@@ -18,11 +18,11 @@ def main(local):
 	Ade_subset = Ade_subset.drop(MissingIndex.index, axis=0)
 	Ade_subset = Ade_subset.drop(SegMissing.index, axis=0)
 	Ade_subset.reset_index(inplace=True)
-	Ade_subset = Ade_subset[['condition', 'object', 'filepath', 'filename']]
+	Ade_subset = Ade_subset[['condition', 'object', 'filepath', 'filename','scene']]
 	if local:
-		Ade_subset.to_csv('../ADE20K_labels/Ade20K_labels_local_subset.txt')
+		Ade_subset.to_csv('../ADE20K_labels/Ade20K_labels_local_scene_subset.txt')
 	else:
-		Ade_subset.to_csv('../ADE20K_labels/Ade20K_labels_marcc_subset.txt')
+		Ade_subset.to_csv('../ADE20K_labels/Ade20K_labels_marcc_scene_subset.txt')
 
 
 #Compute aggregate statistics to see percent of missing index objects, and plot it
@@ -40,7 +40,7 @@ def plotPercentMissing():
 
 
 if __name__ == "__main__":
-	local = 1
+	local = 0
 	main(local)
 
 

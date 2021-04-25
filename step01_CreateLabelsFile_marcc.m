@@ -44,12 +44,13 @@ for iConds = 1 : nConds
         condition{counter} = cond;
         filepath{counter} = fullfile('..','..','..','..','datasets_public','ADE20K', filtered.folder{imgInd});
         filename{counter} = filtered.filename{imgInd}(1:end-4);
+        scenename{counter} = filtered.scene{imgInd};
         
         
     end  
  
 end 
 
-T = table(conditionNumber',condition',filepath',filename','VariableNames',{'condition','object','filepath','filename'});
-writetable(T,'../ADE20K_labels/Ade20K_labels_marcc')
+T = table(conditionNumber',condition',filepath',filename',scenename','VariableNames',{'condition','object','filepath','filename','scene'});
+writetable(T,'../ADE20K_labels/Ade20K_labels_marcc_scene')
 
