@@ -2,6 +2,11 @@ import pandas as pd
 import pylab as P
 import numpy as np
 
+#Cat Magri
+# code implemented to clean up Ade_20k from images that had errors in their segmentation
+#Loads csv file with info about missing segmentation information, removes the rows 
+#corresponding to these images from Ade20k_labels, and saves a new subset version of it 
+
 def main(local): 
 	#Load datasets of relevance
 	MissingIndex = pd.read_csv('../masks-ade-4/AtrFileIndexError_20210413-200239.csv', header = None,names = ['category','filepath'])

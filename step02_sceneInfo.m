@@ -1,7 +1,9 @@
 clear all
 close all
 clc
-% Cleaned up ADE20K index
+% Cat Magri 2021
+% Explorartive analysis of scene distribution across object categories
+
 file = fullfile('..','ADE20K_labels', 'filtered.mat');
 load(file, 'filtered');
 
