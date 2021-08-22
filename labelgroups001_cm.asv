@@ -2,7 +2,7 @@ function groups = labelgroups001_cm()
 
 
 %% Conditions and associated labels in the ADE20K database
-% Cat Magri 2021 modified from labelgroups001
+%Cat Magri 
 
 groups = {
     

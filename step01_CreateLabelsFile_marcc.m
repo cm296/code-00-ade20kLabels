@@ -2,6 +2,10 @@ clear all
 close all
 clc
 % Cleaned up ADE20K index
+%Cat Magri 2021
+% This code builds the file structure to work on MARCC
+%includes Scene Label
+
 file = fullfile('..','ADE20K_labels', 'filtered.mat');
 load(file, 'filtered');
 
